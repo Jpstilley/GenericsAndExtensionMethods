@@ -3,8 +3,11 @@ namespace Generics
 {
     public class Boxes : IStorable
     {
-        public Boxes()
+        public string Name { get; set; }
+
+        public Boxes(string name)
         {
+            Name = name;
         }
     }
 }

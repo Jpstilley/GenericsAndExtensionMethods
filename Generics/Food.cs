@@ -3,8 +3,11 @@ namespace Generics
 {
     public class Food : IStorable
     {
-        public Food()
+        public string Name { get; set; }
+
+        public Food(string name)
         {
+            Name = name;
         }
     }
 }

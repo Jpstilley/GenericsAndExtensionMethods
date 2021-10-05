@@ -8,38 +8,32 @@ namespace Generics
 {
     class Program
     {
-        //Generics
-        //TODO Create a class called "Storage" that has a generic Type "T". Set a constraint to for the type so that T must conform to IStorable.
-        //TODO In your class create a property List called "Bin". Set the list type to "T".
-        //TODO Create two more classes. One class called "Boxes". The second class called "Food". Both classes will conform to IStoreable interface.
-        //TODO create two instances of type Storage in the Main method. First Instance will hold type "<Boxes>". The second instance will hold "<Food>".
-        //TODO create some instanes of type Food and Equipment and Add them the correct storage bins.
-
-        
-
-
-
-
         static void Main(string[] args)
         {
             var food = new Storage<Food>();
             var boxes = new Storage<Boxes>();
 
-            var lunchMeat = new Food();
-            var pizza = new Food();
-            var iceCream = new Food();
+            var lunchMeat = new Food("Turkey");
+            var pizza = new Food("Supreme Pizza");
+            var iceCream = new Food("Chocolate-chip Cookie Dough Ice Cream");
+            var foodStorage = new Storage<Food>(lunchMeat, pizza, iceCream);
 
-            var gloves = new Boxes();
-            var mopHeads = new Boxes();
-            var groceryBags = new Boxes();
+            var gloves = new Boxes("Nitrile Gloves");
+            var mopHeads = new Boxes("Swiffer Mop Heads");
+            var groceryBags = new Boxes("Plastic Bags");
+            var boxStorage = new Storage<Boxes>(gloves, mopHeads, groceryBags);
 
-            food.Bin.Add(lunchMeat);
-            food.Bin.Add(pizza);
-            food.Bin.Add(iceCream);
+            foreach(var foodItem in foodStorage.Bin)
+            {
+                Console.WriteLine(foodItem.Name);
+            }
+            Console.WriteLine();
 
-            boxes.Bin.Add(gloves);
-            boxes.Bin.Add(mopHeads);
-            boxes.Bin.Add(groceryBags);
+            foreach(var boxItem in boxStorage.Bin)
+            {
+                Console.WriteLine(boxItem.Name);
+            }
+            Console.WriteLine();
 
             var word1 = "Food";
             var word2 = "Treaty";
@@ -54,15 +48,5 @@ namespace Generics
 
             Console.ReadKey();
         }
-      
-
-        //ExtensionMethods
-        //TODO Create a static class called "ExtensionMethods"
-        //TODO in your new class create a static extension method called "pluralize" this method should take a string and add an s to the end of it. (***BONUS*** if string ends in y you can replace y with ies to pluralize it)
-
-        //TODO Create an extension method called "SortArray". This method will take an array of type T. Then it will use a LINQ statement to OrderBy.
-        //TODO call both extension methods in the Main. Use the method on the numbers Array.
-
-
     }
 }

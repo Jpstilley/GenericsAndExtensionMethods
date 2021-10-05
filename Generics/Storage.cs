@@ -5,12 +5,12 @@ namespace Generics
 {
     public class Storage<T> where T : IStorable
     {
-        public List<T> Bin { get; set; }
+        public List<T> Bin { get; set; } = new List<T>();
 
 
-        public Storage()
+        public Storage(params T[] bin)
         {
-            Bin = new List<T>();
+            Array.ForEach(bin, item => Bin.Add(item));
         }
 
          
